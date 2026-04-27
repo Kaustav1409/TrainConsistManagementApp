@@ -7,17 +7,27 @@ public class TrainApp {
         String[] bogieIDs = {"BG101", "BG205", "BG309", "BG412", "BG550"};
         String searchKey = "BG309";
 
+        int low = 0;
+        int high = bogieIDs.length - 1;
         boolean found = false;
 
-        for (String id : bogieIDs) {
-            if (id.equals(searchKey)) {
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            int result = bogieIDs[mid].compareTo(searchKey);
+
+            if (result == 0) {
                 found = true;
                 break;
+            } else if (result < 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
 
         if (found) {
-            System.out.println("Bogie ID " + searchKey + " found in train.");
+            System.out.println("Bogie ID " + searchKey + " found using Binary Search.");
         } else {
             System.out.println("Bogie ID " + searchKey + " not found.");
         }
