@@ -15,7 +15,6 @@ public class TrainApp {
                 }
             }
         }
-
         System.out.println("Sorted Capacities:");
 
         for (int c : capacities) {
